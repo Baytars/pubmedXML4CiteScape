@@ -4,9 +4,10 @@ with open('pmid-transcript-set.txt', 'r') as f:
     
     import requests
     import os
-    os.makedirs('results')
+    if not os.path.exists('results/'):
+        os.makedirs('results')
     for PMID in PMIDList:
-        with open('./results/'+PMID+'.xml', 'w') as result:
+        with open('./results/'+PMID+'.xml', 'w', encoding="utf-8") as result:
             url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id='+PMID
             res = requests.get(url)
             result.write(res.text)
