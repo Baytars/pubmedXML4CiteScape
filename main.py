@@ -1,4 +1,4 @@
-with open('pmid-transcript-set.txt', 'r') as f:
+with open('pmid-transcript-set.txt', 'r', encoding="utf-8") as f:
     PMIDList = f.read().splitlines()
     # print(PMIDList)
     
@@ -12,17 +12,17 @@ with open('pmid-transcript-set.txt', 'r') as f:
             res = requests.get(url)
             result.write(res.text)
     
-    with open('result.xml', 'w') as results:
+    with open('result.xml', 'w', encoding="utf-8") as results:
         results.write('<PMIDs><PMID>'+'</PMID><PMID>'.join(PMIDList) + '</PMID></PMIDs>')
     
-with open('result.xml', 'r') as results:
+with open('result.xml', 'r', encoding="utf-8") as results:
     from lxml import etree
-    with open('merge.xsl', 'r') as xsl:
+    with open('merge.xsl', 'r', encoding="utf-8") as xsl:
         xslt = etree.parse(xsl)
         xml = etree.parse(results)
 
         transform = etree.XSLT(xslt)
         merged = transform(xml)
 
-        with open('output.xml', 'w') as output:
+        with open('output.xml', 'w', encoding="utf-8") as output:
             output.write(str(merged))
