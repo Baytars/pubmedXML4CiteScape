@@ -1,8 +1,7 @@
 __pycache__
 build
 dist
-PubmedXML4CiteSpace.exe.spec
 
-results/
-output.xml
-result.xml
+run/
+output.*.xml
+result.*.xml

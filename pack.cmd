@@ -1,1 +1,1 @@
-pyinstaller --onefile main.py --name PubmedXML4CiteSpace.exe
+pyinstaller -F PubmedXML4CiteSpace.exe.spec

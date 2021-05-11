@@ -2,7 +2,7 @@
     <xsl:template match="/">
         <PubmedArticleSet>
             <xsl:for-each select="PMIDs/PMID">
-                <xsl:variable name="dName">results/<xsl:value-of select="." />.xml</xsl:variable>
+                <xsl:variable name="dName"><xsl:value-of select="." /></xsl:variable>
                 <xsl:copy-of select="document($dName)/PubmedArticleSet/PubmedArticle" />
             </xsl:for-each>
         </PubmedArticleSet>
